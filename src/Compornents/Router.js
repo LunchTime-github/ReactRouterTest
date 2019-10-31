@@ -1,15 +1,17 @@
 import React from "react";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import Home from "Routes/Home";
 import TVShows from "Routes/TVShows";
 import Search from "Routes/Search";
-import Detail from "Routes/Detail";
 
 export default () => (
   <Router>
-    <Route path="/" exact component={Home} />
-    <Route path="/tv" exact component={TVShows} />
-    <Route path="/search" exact component={Search} />
-    <Route path="/detail" exact component={Detail} />
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/tv" component={TVShows} />
+      <Route path="/tv/populer" render={() => <h1>Populer</h1>} />
+      <Route path="/search" component={Search} />
+      <Redirect from="*" to="/" />
+    </Switch>
   </Router>
 );
