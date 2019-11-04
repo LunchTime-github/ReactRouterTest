@@ -8,3 +8,14 @@ React 와 ES6 를 공부하기 위한 사이트 입니다 (by.Nomad Coders)
 - [ ] TV Shows
 - [ ] Search
 - [ ] Detail
+
+## API Verbs
+
+- [X] Now playing (Movie)
+- [X] Upcoming (Movie)
+- [X] Popular (TV, Movie)
+- [X] Top Rated (TV)
+- [X] Airing Today (TV)
+- [X] TV Show Detail (TV)
+- [X] Movie Detail (Movie)
+- [X] Search (Movie, TV)
