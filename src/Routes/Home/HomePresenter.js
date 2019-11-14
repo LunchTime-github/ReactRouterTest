@@ -3,27 +3,34 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Section from "Compornents/Section";
+import Loader from "Compornents/Loader";
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 80px 10px 0;
 `;
 
+const Cell = styled.div`
+  padding: 15px;
+`
+
 const HomePresenter = ({ nowPlaying, upComing, popular, loading, error }) =>
-  loading ? null : (
+  loading ? (
+    <Loader />
+  ) : (
     <Container>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section title="Now Playing">
-          {nowPlaying.map(movie => movie.title)}
+          {nowPlaying.map(movie => <Cell>{movie.title}</Cell>)}
         </Section>
       )}
       {upComing && upComing.length > 0 && (
         <Section title="UpComing Movies">
-          {upComing.map(movie => movie.title)}
+          {upComing.map(movie => <Cell>{movie.title}</Cell>)}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title="Popular Movies">
-          {popular.map(movie => movie.title)}
+          {popular.map(movie => <Cell>{movie.title}</Cell>)}
         </Section>
       )}
     </Container>
