@@ -16,11 +16,11 @@ export default () => (
     <>
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/tv" exact component={TV} />
-        <Route path="/search" component={Search} />
-        <Route path="/movie/:id" component={Detail}/>
-        <Route path="/tv/:id" component={Detail}/>
+        <Route path="https://lunchtime-github.github.io/ReactRouterTest/" exact component={Home} />
+        <Route path="https://lunchtime-github.github.io/ReactRouterTest/tv" exact component={TV} />
+        <Route path="https://lunchtime-github.github.io/ReactRouterTest/search" component={Search} />
+        <Route path="https://lunchtime-github.github.io/ReactRouterTest/movie/:id" component={Detail}/>
+        <Route path="https://lunchtime-github.github.io/ReactRouterTest/tv/:id" component={Detail}/>
         <Redirect from="*" to="/" />
       </Switch>
     </>
