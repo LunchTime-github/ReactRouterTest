@@ -1,38 +1,74 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
 import Section from "Compornents/Section";
 import Loader from "Compornents/Loader";
+import Helmet from "react-helmet";
+import { containerStyle, cellStyle } from "Compornents/StyledMixin";
+import Message from "Compornents/Message";
+import Poster from "Compornents/Poster";
 
-const Container = styled.div`
-  padding: 80px 10px 0;
-`;
+const Container = containerStyle;
 
-const Cell = styled.div`
-  padding: 15px;
-`
+const Cell = cellStyle;
 
 const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
   loading ? (
     <Loader />
   ) : (
     <Container>
+      <Helmet>
+        <title>TV Shows | Nomflix</title>
+      </Helmet>
       {topRated && topRated.length > 0 && (
         <Section title="Top Rated Shows">
-          {topRated.map(show => <Cell>{show.name}</Cell>)}
+          {topRated.map(
+            ({ id, poster_path, name, vote_average, first_air_date }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={name}
+                rating={vote_average}
+                year={first_air_date.split("-")[0]}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title="Popular Shows">
-          {popular.map(show => <Cell>{show.name}</Cell>)}
+          {popular.map(
+            ({ id, poster_path, name, vote_average, first_air_date }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={name}
+                rating={vote_average}
+                year={first_air_date.split("-")[0]}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
       {airingToday && airingToday.length > 0 && (
         <Section title="Airing Today Shows">
-          {airingToday.map(show => <Cell>{show.name}</Cell>)}
+          {airingToday.map(
+            ({ id, poster_path, name, vote_average, first_air_date }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={name}
+                rating={vote_average}
+                year={first_air_date.split("-")[0]}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
+      {error && <Message text={error} color="#95a5a6" />}
     </Container>
   );
 

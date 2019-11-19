@@ -42,7 +42,6 @@ export default class extends React.Component {
 
   render() {
     const { popular, topRated, airingToday, loading, error } = this.state;
-    console.log(this.state);
     return (
       <TVPresenter
         popular={popular}

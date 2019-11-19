@@ -16,7 +16,7 @@ const Title = styled.span`
 const Grid = styled.div`
   margin: 25px 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 10%);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 `;
 
 const Section = ({ title, children }) => (

@@ -1,38 +1,95 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
 import Section from "Compornents/Section";
 import Loader from "Compornents/Loader";
+import Helmet from "react-helmet";
+import { containerStyle, cellStyle } from "Compornents/StyledMixin";
+import Message from "Compornents/Message";
+import Poster from "../../Compornents/Poster";
 
-const Container = styled.div`
-  padding: 80px 10px 0;
-`;
+const Container = containerStyle;
 
-const Cell = styled.div`
-  padding: 15px;
-`
+const Cell = cellStyle;
 
 const HomePresenter = ({ nowPlaying, upComing, popular, loading, error }) =>
   loading ? (
     <Loader />
   ) : (
     <Container>
+      <Helmet>
+        <title>Movies | Nomflix</title>
+      </Helmet>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section title="Now Playing">
-          {nowPlaying.map(movie => <Cell>{movie.title}</Cell>)}
+          {nowPlaying.map(
+            ({
+              id,
+              poster_path,
+              original_title,
+              vote_average,
+              release_date
+            }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={original_title}
+                rating={vote_average}
+                year={release_date.split("-")[0]}
+                isMovie={true}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
       {upComing && upComing.length > 0 && (
         <Section title="UpComing Movies">
-          {upComing.map(movie => <Cell>{movie.title}</Cell>)}
+          {upComing.map(
+            ({
+              id,
+              poster_path,
+              original_title,
+              vote_average,
+              release_date
+            }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={original_title}
+                rating={vote_average}
+                year={release_date.split("-")[0]}
+                isMovie={true}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title="Popular Movies">
-          {popular.map(movie => <Cell>{movie.title}</Cell>)}
+          {popular.map(
+            ({
+              id,
+              poster_path,
+              original_title,
+              vote_average,
+              release_date
+            }) => (
+              <Poster
+                key={id}
+                id={id}
+                imageUrl={poster_path}
+                title={original_title}
+                rating={vote_average}
+                year={release_date.split("-")[0]}
+                isMovie={true}
+              ></Poster>
+            )
+          )}
         </Section>
       )}
+      {error && <Message text={error} color="#dbdbdb" />}
     </Container>
   );
 
