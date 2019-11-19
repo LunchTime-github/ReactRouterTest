@@ -21,7 +21,7 @@ export default () => (
         <Route path="/ReactRouterTest/search" component={Search} />
         <Route path="/ReactRouterTest/movie/:id" component={Detail}/>
         <Route path="/ReactRouterTest/tv/:id" component={Detail}/>
-        <Redirect from="*" to="/" />
+        <Redirect from="*" to="/ReactRouterTest" />
       </Switch>
     </>
   </Router>
